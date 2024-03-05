@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<body>
+  <a href="./index.html">Home</a><br>
+
+  <h5 id="display_message">
+        Enter <b>two</b> values
+  </h5>
+  
+
+  
+
+  <div>
+    <label>Pressure: </label>
+    <input id="pressure" type="number" placeholder="Pressure"><br><br>
+
+    <label>Area:</label>
+    <input id="area" type="number" placeholder="Area"><br><br>
+
+    <label>Force:</label>
+    <input id="force" type="number" placeholder="Force"><br><br>
+
+    <button id="submit" onclick="submit_pressure()">Submit</button>
+
+  </div>
+</body>
+
+<script text="text/javascript">
+  window.submit_pressure = function () {
+  document.getElementById("display_message").innerText = "Calculating";
+    let pressure = document.getElementById('pressure').value;
+    let area = document.getElementById('area').value;
+    let force = document.getElementById('force').value;
+
+    console.log(`${pressure}, ${area}, ${force}`)
+  
+    if (get_null([pressure, area, force]) > 1) {
+      document.getElementById('display_message').innerText = "Sorry, enter two values";
+    }
+
+        if (pressure == 0) {
+        document.getElementById("display_message").innerText = `Pressure = ${force/area}`;
+  
+        }
+
+    if (area == 0) {
+      document.getElementById("display_message").innerText = `Area = ${force/pressure}`;
+    }
+
+
+    if (force == 0) {
+      document.getElementById("display_message").innerText = `Force = ${pressure*area}`
+    }
+    
+    
+  }
+  
+  window.get_null = function (items) {
+    let empty = 0;
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      if (item == null || item == 0) {
+        empty ++;
+      }
+      
+    }
+    
+    return empty;
+  }
+  
+</script>
